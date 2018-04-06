@@ -1,0 +1,2 @@
+class UserStressTest < ApplicationRecord
+end
