@@ -13,6 +13,6 @@ module AaditLife
     # -- all .rb files in that directory are automatically loaded.
 
 
-	config.api_only = true
+	config.api_only = false
   end
 end

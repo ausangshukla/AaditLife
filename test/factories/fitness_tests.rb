@@ -1,25 +1,23 @@
 FactoryGirl.define do
   factory :fitness_test do
-    test_date "2018-04-06"
-    weight 1.5
-    fat_percentage 1.5
-    body_age 1
-    bmi 1.5
-    rm 1.5
-    visc_fat 1.5
-    sc_fat 1.5
-    muscle_percentage 1.5
-    fat_kg 1.5
-    muscle_kg 1.5
-    other_kg 1.5
-    fat_loss 1.5
-    muscle_gain 1.5
-    max_speed 1.5
-    duration 1.5
-    reason_for_stopping "MyString"
-    test_details "MyText"
-    user_id 1
-    coach_id 1
-    max_heart_rate 1
+    test_date {Date.today + rand(10) - rand(10)}
+    weight {Random.new.rand(45..120)}
+    fat_percentage {Random.new.rand(20..35)}
+    body_age {Random.new.rand(18..60)}
+    bmi {Random.new.rand(45..120)}
+    rm {Random.new.rand(45..120)}
+    visc_fat {Random.new.rand(10..20)}
+    sc_fat {Random.new.rand(10..20)}
+    muscle_percentage {Random.new.rand(10..20)}
+    fat_kg {Random.new.rand(10..20)}
+    muscle_kg {Random.new.rand(10..20)}
+    other_kg {Random.new.rand(10..20)}
+    fat_loss {Random.new.rand(0..10)}
+    muscle_gain {Random.new.rand(0..10)}
+    max_speed {Random.new.rand(10..20)}
+    duration {Random.new.rand(10..30)}
+    reason_for_stopping {Faker::Simpsons.quote}
+    test_details {Faker::Seinfeld.quote}
+    max_heart_rate {Random.new.rand(90..120)}
   end
 end

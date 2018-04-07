@@ -17,4 +17,11 @@ class User < ApplicationRecord
 
   include DeviseTokenAuth::Concerns::User
 
+  belongs_to :company
+  has_many :goals
+  has_many :medical_histories
+
+  scope :runners, -> { where role: "Runner" }
+  scope :coaches, -> { where role: "Coach" }
+  
 end

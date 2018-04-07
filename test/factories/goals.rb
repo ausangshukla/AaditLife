@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :goal do
-    user_id 1
-    goal_name "MyString"
-    goal_desc "MyText"
+    goal_name {Goal::GOALS.keys.sample}
+    goal_desc {Faker::Lorem.sentences(3).join(" ")}
   end
 end

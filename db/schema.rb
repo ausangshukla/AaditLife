@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406121625) do
+ActiveRecord::Schema.define(version: 20180407122722) do
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -18,6 +18,23 @@ ActiveRecord::Schema.define(version: 20180406121625) do
     t.integer "allowed_signup_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_companies_on_deleted_at"
+  end
+
+  create_table "delayed_jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "fitness_tests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -120,7 +137,7 @@ ActiveRecord::Schema.define(version: 20180406121625) do
     t.integer "birth_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "role", limit: 10, default: "", null: false
+    t.string "role", limit: 15, default: "", null: false
     t.string "phone", limit: 10, default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -133,9 +150,29 @@ ActiveRecord::Schema.define(version: 20180406121625) do
     t.string "last_sign_in_ip"
     t.integer "height"
     t.integer "company_id"
+    t.datetime "deleted_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "provider", default: "email", null: false
+    t.string "uid", null: false
+    t.text "tokens"
     t.index ["company_id"], name: "index_users_on_company_id"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
+  end
+
+  create_table "versions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string "item_type", limit: 191, null: false
+    t.integer "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object", limit: 4294967295
+    t.datetime "created_at"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
   create_table "workouts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -143,7 +180,7 @@ ActiveRecord::Schema.define(version: 20180406121625) do
     t.string "workout_type"
     t.integer "activity_time"
     t.float "activity_speed", limit: 24
-    t.integer "recover_time"
+    t.integer "recovery_time"
     t.integer "repeats"
     t.integer "total_duration"
     t.boolean "current"

@@ -68,7 +68,7 @@ gem 'daemons'
 
 gem "paperclip"
 gem 'aws-sdk'
-gem 'faker'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem "twilio-ruby"
 
 gem 'factory_girl_rails'
@@ -87,6 +87,7 @@ gem 'capybara-email'
 # gem 'high_voltage'
 gem 'roadie'
 gem 'logstash-logger'
+
 
 group :test do
   gem 'cucumber-rails', require: false
