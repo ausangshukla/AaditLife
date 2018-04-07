@@ -2,6 +2,11 @@ class FitnessTest < ApplicationRecord
 	belongs_to :user
 	has_many :workouts
 
+	has_many :current_workouts, -> (object) { 
+           where("workouts.fitness_test_id = ?", object.id)
+         },
+         :class_name => 'Workout'
+
 	before_create :make_current
 	before_save :update_workouts
 

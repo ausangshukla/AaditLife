@@ -11,6 +11,8 @@ class UserDashboard < Administrate::BaseDashboard
     company: Field::BelongsTo,
     goals: Field::HasMany,
     medical_histories: Field::HasMany,
+    current_workouts: Field::HasMany.with_options(class_name: "Workout"),
+    current_fitness_test: Field::HasOne.with_options(class_name: "FitnessTest"),
     id: Field::Number,
     email: Field::String,
     first_name: Field::String,
@@ -61,8 +63,8 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :company,
-    :goals,
-    :medical_histories,
+    :current_fitness_test,
+    :current_workouts,
     :id,
     :email,
     :first_name,
@@ -73,23 +75,8 @@ class UserDashboard < Administrate::BaseDashboard
     :updated_at,
     :role,
     :phone,
-    :encrypted_password,
-    :reset_password_token,
-    :reset_password_sent_at,
-    :remember_created_at,
-    :sign_in_count,
-    :current_sign_in_at,
-    :last_sign_in_at,
-    :current_sign_in_ip,
-    :last_sign_in_ip,
     :height,
-    :deleted_at,
-    :confirmation_token,
-    :confirmed_at,
-    :confirmation_sent_at,
-    :provider,
-    :uid,
-    :tokens,
+    
   ].freeze
 
   # FORM_ATTRIBUTES

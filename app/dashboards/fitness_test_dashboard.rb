@@ -8,6 +8,7 @@ class FitnessTestDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    current_workouts: Field::HasMany.with_options(class_name: "Workout"),
     id: Field::Number,
     test_date: Field::DateTime,
     weight: Field::Number.with_options(decimals: 2),
@@ -44,6 +45,19 @@ class FitnessTestDashboard < Administrate::BaseDashboard
     :test_date,
     :weight,
     :fat_percentage,
+    :body_age,
+    :bmi,
+    :rm,
+    :visc_fat,
+    :sc_fat,
+    :muscle_percentage,
+    :fat_kg,
+    :muscle_kg,
+    :other_kg,
+    :fat_loss,
+    :muscle_gain,
+    :max_speed,
+    :duration,    
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -73,6 +87,7 @@ class FitnessTestDashboard < Administrate::BaseDashboard
     :max_heart_rate,
     :created_at,
     :updated_at,
+    :current_workouts
   ].freeze
 
   # FORM_ATTRIBUTES
