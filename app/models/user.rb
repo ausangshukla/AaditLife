@@ -21,6 +21,21 @@ class User < ApplicationRecord
   has_many :goals
   has_many :medical_histories
 
+  has_many :workouts
+  has_many :schedules
+  has_many :targets
+  has_many :fitness_tests
+
+  has_many :current_workouts, -> (object) { 
+           where("workouts.current = ?", true)
+         },
+         :class_name => 'Workout'
+
+  has_one :current_fitness_test, -> (object) { 
+           where("fitness_tests.current = ?", true)
+         },
+         :class_name => 'FitnessTest'
+
   scope :runners, -> { where role: "Runner" }
   scope :coaches, -> { where role: "Coach" }
   

@@ -145,6 +145,7 @@ namespace :al do
           w = FactoryGirl.build(:workout)
           w.workout_type = wt
           w.user_id = r.id
+          w.fitness_test_id = ft.id
           w.save!
         end
       end

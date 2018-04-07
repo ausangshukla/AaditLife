@@ -33,31 +33,27 @@ class CompanyDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :users,
     :id,
     :name,
     :description,
     :allowed_signup_count,
     :created_at,
     :updated_at,
-    :deleted_at,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :users,
     :name,
     :description,
     :allowed_signup_count,
-    :deleted_at,
   ].freeze
 
   # Overwrite this method to customize how companies are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(company)
-  #   "Company ##{company.id}"
-  # end
+  def display_resource(company)
+     company.name
+  end
 end

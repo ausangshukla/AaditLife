@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407122722) do
+ActiveRecord::Schema.define(version: 20180407144036) do
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 20180407122722) do
     t.integer "max_heart_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "current"
+    t.index ["current"], name: "index_fitness_tests_on_current"
   end
 
   create_table "goals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -137,7 +139,7 @@ ActiveRecord::Schema.define(version: 20180407122722) do
     t.integer "birth_year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "role", limit: 15, default: "", null: false
+    t.string "role", limit: 15
     t.string "phone", limit: 10, default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -187,7 +189,9 @@ ActiveRecord::Schema.define(version: 20180407122722) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "recovery_speed", limit: 24
+    t.integer "fitness_test_id"
     t.index ["current"], name: "index_workouts_on_current"
+    t.index ["fitness_test_id"], name: "index_workouts_on_fitness_test_id"
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
 
