@@ -11,8 +11,9 @@ class UserDashboard < Administrate::BaseDashboard
     company: Field::BelongsTo,
     goals: Field::HasMany,
     medical_histories: Field::HasMany,
+    targets: Field::HasMany,
     current_workouts: Field::HasMany.with_options(class_name: "Workout"),
-    current_fitness_test: Field::HasOne.with_options(class_name: "FitnessTest"),
+    fitness_tests: Field::HasMany,
     id: Field::Number,
     email: Field::String,
     first_name: Field::String,
@@ -63,7 +64,8 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :company,
-    :current_fitness_test,
+    :fitness_tests,
+    :targets,
     :current_workouts,
     :id,
     :email,

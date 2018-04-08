@@ -8,6 +8,7 @@ class TargetDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    user: Field::BelongsTo,
     id: Field::Number,
     start_date: Field::DateTime,
     end_date: Field::DateTime,
@@ -36,9 +37,16 @@ class TargetDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
+    :user,
     :start_date,
     :end_date,
     :weight,
+    :fat_percentage,
+    :body_age,
+    :bmi,
+    :rm,
+    :visc_fat,
+    :sc_fat
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

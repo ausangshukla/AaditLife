@@ -29,9 +29,13 @@ class WorkoutDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
-    :user_id,
     :workout_type,
     :activity_time,
+    :activity_speed,
+    :recovery_time,
+    :recovery_speed,
+    :total_duration,
+    :current
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
