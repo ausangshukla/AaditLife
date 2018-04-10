@@ -5,11 +5,13 @@ class WorkoutsController < ApplicationController
   # GET /workouts.json
   def index
     @workouts = Workout.all
+    render json: @workouts
   end
 
   # GET /workouts/1
   # GET /workouts/1.json
   def show
+    render json: @workout
   end
 
   # POST /workouts
@@ -18,7 +20,7 @@ class WorkoutsController < ApplicationController
     @workout = Workout.new(workout_params)
 
     if @workout.save
-      render :show, status: :created, location: @workout
+      render json: @workout, status: :created, location: @workout
     else
       render json: @workout.errors, status: :unprocessable_entity
     end
@@ -28,7 +30,7 @@ class WorkoutsController < ApplicationController
   # PATCH/PUT /workouts/1.json
   def update
     if @workout.update(workout_params)
-      render :show, status: :ok, location: @workout
+      render json: @workout, status: :ok, location: @workout
     else
       render json: @workout.errors, status: :unprocessable_entity
     end

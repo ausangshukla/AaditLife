@@ -5,11 +5,13 @@ class TargetsController < ApplicationController
   # GET /targets.json
   def index
     @targets = Target.all
+    render json: @targets
   end
 
   # GET /targets/1
   # GET /targets/1.json
   def show
+    render json: @target
   end
 
   # POST /targets
@@ -18,7 +20,7 @@ class TargetsController < ApplicationController
     @target = Target.new(target_params)
 
     if @target.save
-      render :show, status: :created, location: @target
+      render json: @target, status: :created, location: @target
     else
       render json: @target.errors, status: :unprocessable_entity
     end
@@ -28,7 +30,7 @@ class TargetsController < ApplicationController
   # PATCH/PUT /targets/1.json
   def update
     if @target.update(target_params)
-      render :show, status: :ok, location: @target
+      render json: @target, status: :ok, location: @target
     else
       render json: @target.errors, status: :unprocessable_entity
     end

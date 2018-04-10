@@ -5,11 +5,13 @@ class MedicalHistoriesController < ApplicationController
   # GET /medical_histories.json
   def index
     @medical_histories = MedicalHistory.all
+    render json: @medical_histories
   end
 
   # GET /medical_histories/1
   # GET /medical_histories/1.json
   def show
+    render json: @medical_history
   end
 
   # POST /medical_histories
@@ -18,7 +20,7 @@ class MedicalHistoriesController < ApplicationController
     @medical_history = MedicalHistory.new(medical_history_params)
 
     if @medical_history.save
-      render :show, status: :created, location: @medical_history
+      render json: @medical_history, status: :created, location: @medical_history
     else
       render json: @medical_history.errors, status: :unprocessable_entity
     end
@@ -28,7 +30,7 @@ class MedicalHistoriesController < ApplicationController
   # PATCH/PUT /medical_histories/1.json
   def update
     if @medical_history.update(medical_history_params)
-      render :show, status: :ok, location: @medical_history
+      render json: @medical_history, status: :ok, location: @medical_history
     else
       render json: @medical_history.errors, status: :unprocessable_entity
     end

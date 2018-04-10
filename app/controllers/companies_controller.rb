@@ -5,11 +5,13 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @companies = Company.all
+    render json: @companies
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
+    render json: @company
   end
 
   # POST /companies
@@ -18,7 +20,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
 
     if @company.save
-      render :show, status: :created, location: @company
+      render json: @company, status: :created, location: @company
     else
       render json: @company.errors, status: :unprocessable_entity
     end
@@ -28,7 +30,7 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1.json
   def update
     if @company.update(company_params)
-      render :show, status: :ok, location: @company
+      render json: @company
     else
       render json: @company.errors, status: :unprocessable_entity
     end
@@ -38,6 +40,7 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1.json
   def destroy
     @company.destroy
+    render json: @company
   end
 
   private

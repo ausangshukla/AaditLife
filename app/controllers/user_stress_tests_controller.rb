@@ -5,11 +5,13 @@ class UserStressTestsController < ApplicationController
   # GET /user_stress_tests.json
   def index
     @user_stress_tests = UserStressTest.all
+    render json: @user_stress_tests
   end
 
   # GET /user_stress_tests/1
   # GET /user_stress_tests/1.json
   def show
+    render json: @user_stress_test
   end
 
   # POST /user_stress_tests
@@ -18,7 +20,7 @@ class UserStressTestsController < ApplicationController
     @user_stress_test = UserStressTest.new(user_stress_test_params)
 
     if @user_stress_test.save
-      render :show, status: :created, location: @user_stress_test
+      render json: @user_stress_test, status: :created, location: @user_stress_test
     else
       render json: @user_stress_test.errors, status: :unprocessable_entity
     end
@@ -28,7 +30,7 @@ class UserStressTestsController < ApplicationController
   # PATCH/PUT /user_stress_tests/1.json
   def update
     if @user_stress_test.update(user_stress_test_params)
-      render :show, status: :ok, location: @user_stress_test
+      render json: @user_stress_test, status: :ok, location: @user_stress_test
     else
       render json: @user_stress_test.errors, status: :unprocessable_entity
     end

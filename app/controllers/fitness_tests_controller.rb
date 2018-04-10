@@ -5,11 +5,13 @@ class FitnessTestsController < ApplicationController
   # GET /fitness_tests.json
   def index
     @fitness_tests = FitnessTest.all
+    render json: @fitness_tests
   end
 
   # GET /fitness_tests/1
   # GET /fitness_tests/1.json
   def show
+    render json: @fitness_test
   end
 
   # POST /fitness_tests
@@ -18,7 +20,7 @@ class FitnessTestsController < ApplicationController
     @fitness_test = FitnessTest.new(fitness_test_params)
 
     if @fitness_test.save
-      render :show, status: :created, location: @fitness_test
+      render json: @fitness_test, status: :created, location: @fitness_test
     else
       render json: @fitness_test.errors, status: :unprocessable_entity
     end
@@ -28,7 +30,7 @@ class FitnessTestsController < ApplicationController
   # PATCH/PUT /fitness_tests/1.json
   def update
     if @fitness_test.update(fitness_test_params)
-      render :show, status: :ok, location: @fitness_test
+      render json: @fitness_test
     else
       render json: @fitness_test.errors, status: :unprocessable_entity
     end

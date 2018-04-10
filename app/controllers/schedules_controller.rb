@@ -5,11 +5,13 @@ class SchedulesController < ApplicationController
   # GET /schedules.json
   def index
     @schedules = Schedule.all
+    render json: @schedules
   end
 
   # GET /schedules/1
   # GET /schedules/1.json
   def show
+    render json: @schedule
   end
 
   # POST /schedules
@@ -18,7 +20,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(schedule_params)
 
     if @schedule.save
-      render :show, status: :created, location: @schedule
+      render json: @schedule, status: :created, location: @schedule
     else
       render json: @schedule.errors, status: :unprocessable_entity
     end
@@ -28,7 +30,7 @@ class SchedulesController < ApplicationController
   # PATCH/PUT /schedules/1.json
   def update
     if @schedule.update(schedule_params)
-      render :show, status: :ok, location: @schedule
+      render json: @schedule, status: :ok, location: @schedule
     else
       render json: @schedule.errors, status: :unprocessable_entity
     end

@@ -5,11 +5,13 @@ class GoalsController < ApplicationController
   # GET /goals.json
   def index
     @goals = Goal.all
+    render json: @goals
   end
 
   # GET /goals/1
   # GET /goals/1.json
   def show
+    render json: @goal
   end
 
   # POST /goals
@@ -18,7 +20,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
 
     if @goal.save
-      render :show, status: :created, location: @goal
+      render json: @goal, status: :created, location: @goal
     else
       render json: @goal.errors, status: :unprocessable_entity
     end
@@ -28,7 +30,7 @@ class GoalsController < ApplicationController
   # PATCH/PUT /goals/1.json
   def update
     if @goal.update(goal_params)
-      render :show, status: :ok, location: @goal
+      render json: @goal, status: :ok, location: @goal
     else
       render json: @goal.errors, status: :unprocessable_entity
     end
