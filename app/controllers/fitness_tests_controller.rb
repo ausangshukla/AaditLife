@@ -1,10 +1,11 @@
 class FitnessTestsController < ApplicationController
-  before_action :set_fitness_test, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
+  load_and_authorize_resource param_method: :fitness_test_params, except: [:create]
+
 
   # GET /fitness_tests
   # GET /fitness_tests.json
   def index
-    @fitness_tests = FitnessTest.all
     render json: @fitness_tests
   end
 

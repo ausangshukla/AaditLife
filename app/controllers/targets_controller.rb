@@ -1,10 +1,11 @@
 class TargetsController < ApplicationController
-  before_action :set_target, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
+  load_and_authorize_resource param_method: :target_params, except: [:create]
+
 
   # GET /targets
   # GET /targets.json
   def index
-    @targets = Target.all
     render json: @targets
   end
 

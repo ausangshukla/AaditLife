@@ -1,10 +1,11 @@
 class UserStressTestsController < ApplicationController
-  before_action :set_user_stress_test, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
+  load_and_authorize_resource param_method: :user_stress_test_params, except: [:create]
+
 
   # GET /user_stress_tests
   # GET /user_stress_tests.json
   def index
-    @user_stress_tests = UserStressTest.all
     render json: @user_stress_tests
   end
 

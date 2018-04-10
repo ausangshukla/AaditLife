@@ -1,10 +1,11 @@
 class GoalsController < ApplicationController
-  before_action :set_goal, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
+  load_and_authorize_resource param_method: :goal_params, except: [:create]
+
 
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
     render json: @goals
   end
 

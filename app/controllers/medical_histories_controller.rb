@@ -1,10 +1,11 @@
 class MedicalHistoriesController < ApplicationController
-  before_action :set_medical_history, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
+  load_and_authorize_resource param_method: :medical_history_params, except: [:create]
+
 
   # GET /medical_histories
   # GET /medical_histories.json
   def index
-    @medical_histories = MedicalHistory.all
     render json: @medical_histories
   end
 

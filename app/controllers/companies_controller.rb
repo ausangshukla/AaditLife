@@ -1,10 +1,13 @@
 class CompaniesController < ApplicationController
+
+  before_action :authenticate_user!
+  load_and_authorize_resource param_method: :company_params, except: [:create]
+
   before_action :set_company, only: [:show, :update, :destroy]
 
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
     render json: @companies
   end
 

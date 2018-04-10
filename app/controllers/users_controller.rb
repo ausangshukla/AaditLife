@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+
+  before_action :authenticate_user!
+  load_and_authorize_resource param_method: :user_params, except: [:create]
+
 
   # GET /users
   # GET /users.json

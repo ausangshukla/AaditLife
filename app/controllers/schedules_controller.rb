@@ -1,10 +1,11 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
+  load_and_authorize_resource param_method: :schedule_params, except: [:create]
+
 
   # GET /schedules
   # GET /schedules.json
   def index
-    @schedules = Schedule.all
     render json: @schedules
   end
 

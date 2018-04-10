@@ -1,10 +1,12 @@
 class WorkoutsController < ApplicationController
-  before_action :set_workout, only: [:show, :update, :destroy]
+
+  before_action :authenticate_user!
+  load_and_authorize_resource param_method: :workout_params, except: [:create]
+
 
   # GET /workouts
   # GET /workouts.json
   def index
-    @workouts = Workout.all
     render json: @workouts
   end
 
