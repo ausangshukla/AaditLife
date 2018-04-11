@@ -135,11 +135,16 @@ namespace :al do
         g = FactoryGirl.build(:goal)
         g.user_id = r.id
         g.save!
-
+        
         ft = FactoryGirl.build(:fitness_test)
         ft.user_id = r.id
         ft.coach_id = coaches.sample.id
         ft.save!
+
+        m = FactoryGirl.build(:medical_history)
+        m.user_id = r.id
+        m.save!
+
 
         Workout::WORKOUT_TYPES.each do |wt|
           w = FactoryGirl.build(:workout)

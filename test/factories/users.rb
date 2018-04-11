@@ -10,7 +10,7 @@ FactoryGirl.define do
     sign_in_count { 5 }
     role {"Runner"}
     gender { User::SEX[rand(2)]}
-    height {rand(5.0..6.8)}
+    height {rand(5.0..6.8).round(1)}
     accept_terms {true}
     birth_year {Random.new.rand(1965..2010)}
   end

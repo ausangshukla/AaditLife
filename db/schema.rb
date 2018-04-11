@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180408070308) do
+ActiveRecord::Schema.define(version: 20180411121202) do
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -67,19 +67,31 @@ ActiveRecord::Schema.define(version: 20180408070308) do
 
   create_table "goals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
-    t.string "goal_name"
-    t.text "goal_desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "reason"
+    t.text "delight"
+    t.text "frequency"
+    t.text "current_activity"
   end
 
   create_table "medical_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
-    t.string "name"
-    t.string "value_type"
-    t.text "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "last_medical_checkup"
+    t.boolean "q1"
+    t.boolean "q2"
+    t.boolean "q3"
+    t.boolean "q4"
+    t.boolean "q5"
+    t.boolean "q6"
+    t.boolean "q7"
+    t.boolean "q8"
+    t.boolean "q9"
+    t.boolean "q10"
+    t.boolean "q11"
+    t.text "specific_issue"
   end
 
   create_table "schedules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -150,7 +162,7 @@ ActiveRecord::Schema.define(version: 20180408070308) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.integer "height"
+    t.string "height", limit: 10
     t.integer "company_id"
     t.datetime "deleted_at"
     t.string "confirmation_token"
