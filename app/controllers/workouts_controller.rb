@@ -7,6 +7,11 @@ class WorkoutsController < ApplicationController
   # GET /workouts
   # GET /workouts.json
   def index
+    if(params[:fitness_test_id].present?)
+      @workouts = @workouts.where(fitness_test_id: params[:fitness_test_id])
+    else
+      @workouts = @workouts.where(current: true)
+    end
     render json: @workouts
   end
 
@@ -52,6 +57,7 @@ class WorkoutsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def workout_params
-      params.require(:workout).permit(:user_id, :workout_type, :activity_time, :activity_speed, :recovery_time, :repeats, :total_duration, :current)
+      params.require(:workout).permit(:user_id, :workout_type, :activity_time, :activity_speed, 
+        :recovery_time, :repeats, :total_duration, :current, :fitness_test_id)
     end
 end

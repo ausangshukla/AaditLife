@@ -7,12 +7,20 @@ class SchedulesController < ApplicationController
   # GET /schedules.json
   def index
     # By default we only give this weeks schedule
-    scheduled_date = Date.today
-    if(params[:scheduled_date].present?)
-      scheduled_date = Date.strptime(params[:scheduled_date], "%d/%m/%Y")
+
+    if(params[:fitness_test_id].present?)
+      @schedules = @schedules.where(fitness_test_id: params[:fitness_test_id])
+    else
+      scheduled_date = Date.today    
+      if(params[:scheduled_date].present?)
+        scheduled_date = Date.strptime(params[:scheduled_date], "%d/%m/%Y")
+      end
+      @schedules = @schedules.where("scheduled_date >= ? and scheduled_date <= ?", 
+                                     scheduled_date.beginning_of_week, scheduled_date.end_of_week)
     end
-    @schedules = @schedules.where("scheduled_date >= ? and scheduled_date <= ?", scheduled_date.beginning_of_week, scheduled_date.end_of_week)
-    render json: @schedules
+
+    
+    render json: @schedules.includes(:workout)
   end
 
   # GET /schedules/1
