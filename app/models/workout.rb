@@ -1,5 +1,5 @@
 class Workout < ApplicationRecord
-	WORKOUT_TYPES = ["Long", "Tempo", "Interval", "Speed"]
+	WORKOUT_TYPES = ["Tempo", "Interval", "Long", "Speed"]
 	belongs_to :user
 	belongs_to :fitness_test
 
@@ -7,5 +7,6 @@ class Workout < ApplicationRecord
 
 	def update_current
 		self.current = self.fitness_test.current
-	end
+	end	
+
 end

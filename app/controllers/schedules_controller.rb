@@ -6,6 +6,12 @@ class SchedulesController < ApplicationController
   # GET /schedules
   # GET /schedules.json
   def index
+    # By default we only give this weeks schedule
+    scheduled_date = Date.today
+    if(params[:scheduled_date].present?)
+      scheduled_date = Date.strptime(params[:scheduled_date], "%d/%m/%Y")
+    end
+    @schedules = @schedules.where("scheduled_date >= ? and scheduled_date <= ?", scheduled_date.beginning_of_week, scheduled_date.end_of_week)
     render json: @schedules
   end
 
@@ -51,6 +57,7 @@ class SchedulesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def schedule_params
-      params.require(:schedule).permit(:user_id, :workout_id, :scheduled_date, :completion_percentage, :rating, :comments)
+      params.require(:schedule).permit(:user_id, :workout_id, :fitness_test_id, :scheduled_date, 
+        :completion_percentage, :rating, :comments)
     end
 end

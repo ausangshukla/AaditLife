@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411121202) do
+ActiveRecord::Schema.define(version: 20180412061017) do
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -103,6 +103,9 @@ ActiveRecord::Schema.define(version: 20180411121202) do
     t.text "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "workout_type"
+    t.integer "fitness_test_id"
+    t.index ["fitness_test_id"], name: "index_schedules_on_fitness_test_id"
     t.index ["scheduled_date"], name: "index_schedules_on_scheduled_date"
     t.index ["user_id"], name: "index_schedules_on_user_id"
     t.index ["workout_id"], name: "index_schedules_on_workout_id"
