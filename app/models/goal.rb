@@ -8,4 +8,10 @@ class Goal < ApplicationRecord
 
 
 
+	after_create :update_user_goals_done
+	# Ensure if the test is done then the user profile is updated
+	def update_user_goals_done
+		self.user.goals_setup = true
+		self.user.save
+	end
 end

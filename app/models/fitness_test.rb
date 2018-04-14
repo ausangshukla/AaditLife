@@ -10,6 +10,7 @@ class FitnessTest < ApplicationRecord
 
 	before_create :make_current
 	before_save :update_workouts
+	after_create :update_user_test_done
 
 	def make_current
 		self.current = true
@@ -27,6 +28,12 @@ class FitnessTest < ApplicationRecord
 		if(self.current_was != self.current)
 			self.workouts.update_all(current: self.current)
 		end
+	end
+
+	# Ensure if the test is done then the user profile is updated
+	def update_user_test_done
+		self.user.initial_test_completed = true
+		self.user.save
 	end
 
 
