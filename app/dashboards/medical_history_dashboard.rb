@@ -10,9 +10,19 @@ class MedicalHistoryDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
     id: Field::Number,
-    name: Field::String,
-    value_type: Field::String,
-    value: Field::Text,
+    last_medical_checkup: Field::String,
+    q1: Field::Boolean,
+    q2: Field::Boolean,
+    q3: Field::Boolean,
+    q4: Field::Boolean,
+    q5: Field::Boolean,
+    q6: Field::Boolean,
+    q7: Field::Boolean,
+    q8: Field::Boolean,
+    q9: Field::Boolean,
+    q10: Field::Boolean,
+    q11: Field::Boolean,
+    specific_issue: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -25,8 +35,8 @@ class MedicalHistoryDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :user,
     :id,
-    :name,
-    :value_type,
+    :last_medical_checkup,
+    :specific_issue,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -34,9 +44,9 @@ class MedicalHistoryDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :user,
     :id,
-    :name,
-    :value_type,
-    :value,
+    :last_medical_checkup,
+    :q1,:q2,:q3,:q4,:q5,:q6,:q7,:q8,:q9,:q10,:q11,
+    :specific_issue,
     :created_at,
     :updated_at,
   ].freeze
@@ -45,10 +55,9 @@ class MedicalHistoryDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :user,
-    :name,
-    :value_type,
-    :value,
+    :last_medical_checkup,
+    :q1,:q2,:q3,:q4,:q5,:q6,:q7,:q8,:q9,:q10,:q11,
+    :specific_issue,
   ].freeze
 
   # Overwrite this method to customize how medical histories are displayed

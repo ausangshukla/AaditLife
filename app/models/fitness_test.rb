@@ -2,6 +2,7 @@ class FitnessTest < ApplicationRecord
 	belongs_to :user
 	has_many :workouts
 	has_many :schedules
+	has_many :cardio_profiles
 
 	has_many :current_workouts, -> (object) { 
            where("workouts.fitness_test_id = ?", object.id)

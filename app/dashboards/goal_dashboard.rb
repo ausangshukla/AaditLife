@@ -10,8 +10,10 @@ class GoalDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
     id: Field::Number,
-    goal_name: Field::String,
-    goal_desc: Field::Text,
+    reason: Field::Text,
+    delight: Field::Text,
+    frequency: Field::Text,
+    current_activity: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -24,8 +26,10 @@ class GoalDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :user,
     :id,
-    :goal_name,
-    :goal_desc,
+    :delight,
+    :reason,
+    :frequency,
+    :current_activity
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -33,8 +37,10 @@ class GoalDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :user,
     :id,
-    :goal_name,
-    :goal_desc,
+    :delight,
+    :reason,
+    :frequency,
+    :current_activity,
     :created_at,
     :updated_at,
   ].freeze
@@ -43,9 +49,10 @@ class GoalDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :user,
-    :goal_name,
-    :goal_desc,
+    :delight,
+    :reason,
+    :frequency,
+    :current_activity
   ].freeze
 
   # Overwrite this method to customize how goals are displayed

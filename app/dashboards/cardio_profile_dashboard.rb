@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class CompanyDashboard < Administrate::BaseDashboard
+class CardioProfileDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,14 +8,14 @@ class CompanyDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    users: Field::HasMany,
     id: Field::Number,
-    name: Field::String,
-    description: Field::Text,
-    allowed_signup_count: Field::Number,
+    fitness_test_id: Field::Number,
+    user: Field::BelongsTo,
+    on_date: Field::DateTime,
+    speed: Field::Number.with_options(decimals: 2),
+    bpm: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    deleted_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,19 +24,21 @@ class CompanyDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
-    :name,
-    :allowed_signup_count,
-    :description,
+    :user,
+    :speed,
+    :bpm,
+    :on_date,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
-    :name,
-    :description,
-    :allowed_signup_count,
+    :fitness_test_id,
+    :user,
+    :on_date,
+    :speed,
+    :bpm,
     :created_at,
     :updated_at,
   ].freeze
@@ -45,15 +47,15 @@ class CompanyDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :name,
-    :description,
-    :allowed_signup_count,
+    :on_date,
+    :speed,
+    :bpm,
   ].freeze
 
-  # Overwrite this method to customize how companies are displayed
+  # Overwrite this method to customize how cardio profiles are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(company)
-     company.name
-  end
+  # def display_resource(cardio_profile)
+  #   "CardioProfile ##{cardio_profile.id}"
+  # end
 end

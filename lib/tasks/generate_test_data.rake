@@ -141,6 +141,16 @@ namespace :al do
         ft.coach_id = coaches.sample.id
         ft.save!
 
+        (4..15).each do |speed|
+          c = FactoryGirl.build(:cardio_profile)          
+          c.user_id = r.id
+          c.fitness_test_id = ft.id
+          c.speed = speed.to_f
+          c.bpm = 110 + speed
+          c.on_date = ft.created_at
+          c.save
+        end
+
         m = FactoryGirl.build(:medical_history)
         m.user_id = r.id
         m.save!

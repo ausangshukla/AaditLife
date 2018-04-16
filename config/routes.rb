@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   namespace :admin do
     resources :users
     resources :companies
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
     resources :targets
     resources :user_stress_tests
     resources :workouts
-
+    resources :cardio_profiles
     root to: "users#index"
   end
 
@@ -22,7 +23,12 @@ Rails.application.routes.draw do
   resources :companies
   resources :medical_histories
   resources :goals
-  
+  resources :cardio_profiles
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+  
 end
