@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>User <%=@user.first_name%>, <%=@user.last_name%> had a bad run</p>
+    <table border="1" cellpadding="0" cellspacing="0">
+    	<tr>
+    		<td>User:</td>
+    		<td><%= @user.first_name %></td>
+    	</tr>
+    	<tr>
+    		<td>Phone:</td>
+    		<td><%= @user.phone %></td>
+    	</tr>
+    	<tr>
+    		<td>Email:</td>
+    		<td><%= @user.email %></td>
+    	</tr>
+    	<tr>
+    		<td>Run:</td>
+    		<td><%= @schedule.workout_type %></td>
+    	</tr>
+    	<tr>
+    		<td>Date:</td>
+    		<td><%= @schedule.scheduled_date.strftime("%d/%m/%Y") %></td>
+    	</tr>
+    	<tr>
+    		<td>Comments:</td>
+    		<td><%= @schedule.comments %></td>
+    	</tr>
+    </table>
+  </body>
+</html>
