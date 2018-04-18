@@ -1,6 +1,6 @@
 class SchedulesController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource param_method: :schedule_params, except: [:create]
+  load_and_authorize_resource param_method: :schedule_params, except: [:create, :generate_schedule]
 
 
   # GET /schedules
@@ -57,6 +57,18 @@ class SchedulesController < ApplicationController
     @schedule.destroy
   end
 
+
+  def generate_schedule
+    # Get the fitness test id if present - else its the current fitness test
+    fitness_test_id = params[:fitness_test_id].present? ? params[:fitness_test_id] : current_user.current_fitness_test.id
+    permitted = params.require(:day_sequence).permit!
+    day_sequence = permitted.to_h
+    # schedule for 8 weeks
+    num_weeks = 8
+    ScheduleGeneratorJob.perform_later(fitness_test_id, num_weeks, day_sequence)
+    render json: {}, status: :ok
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_schedule
@@ -66,6 +78,6 @@ class SchedulesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def schedule_params
       params.require(:schedule).permit(:user_id, :workout_id, :fitness_test_id, :scheduled_date, 
-        :completion_percentage, :rating, :comments)
+        :completion_percentage, :rating, :comments, :day_sequence)
     end
 end

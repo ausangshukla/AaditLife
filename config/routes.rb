@@ -16,7 +16,11 @@ Rails.application.routes.draw do
 
   mount_devise_token_auth_for 'User', at: 'auth'
   resources :user_stress_tests
-  resources :schedules
+  resources :schedules do
+    collection do
+      post :generate_schedule
+    end
+  end
   resources :workouts
   resources :targets
   resources :fitness_tests

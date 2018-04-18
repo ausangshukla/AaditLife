@@ -38,10 +38,14 @@ class FitnessTest < ApplicationRecord
 	end
 
 
-	def generate_schedule(start_date, num_days)
+	def generate_schedule(start_date, num_weeks=8, day_sequence={2 => "Tempo", 4 => "Interval", 6 => "Long"})
+		# Sort the map by keys, sometimes the keys are strings so we convert to int
+		day_sequence = day_sequence.sort.to_h.map{|k,v| [k.to_i,v]}.to_h
+		# The starting day 1=Mon, 2=Tue .....
+		start_day = day_sequence.keys.sort.first - 1
 		# we get the start and end dates
-		start_date = start_date.beginning_of_week + 1.day # Start on Tue
-		end_date = (start_date + num_days.days).end_of_week
+		start_date = start_date.beginning_of_week + start_day.day # Start on Tue
+		end_date = (start_date + num_weeks.weeks).end_of_week
 
 		# Map the current workouts to the workout_type
 		workout_map = {}
@@ -49,30 +53,35 @@ class FitnessTest < ApplicationRecord
 			workout_map[w.workout_type] = w
 		end
 
-		# This will be the repeated sequence of workouts
-		workout_sequence = ["Tempo", "Interval", "Long", "Tempo", "Speed", "Long"]
-		
-		i = 0
-		rest_day = false
-		(start_date..end_date).each do |date|
-			# Check if its a rest day - move to next date
-			if(rest_day)
-				logger.debug "No Scheduling. Rest day on #{date}"
-				rest_day = false
-				next
-			else				
+		# Create the schdules
+		week = 1
+		scheduled_date = start_date
+		while(scheduled_date < end_date )
+			(1..7).each do |weekday|
 				
-				# get the workout for the day
-				workout = workout_map[workout_sequence[i]]
-				logger.debug "Scheduling #{workout.workout_type} for #{date}"
-				Schedule.create(user_id: user.id, fitness_test_id: self.id,
-					workout_id: workout.id, workout_type: workout.workout_type, 
-					scheduled_date: date, completion_percentage: 0)			
-				
-				i = (i == workout_sequence.length - 1) ? 0 : i + 1
-				# Ensure the next day is a rest day
-				rest_day = true
+				workout_type = day_sequence[weekday]
+			
+				if(workout_type)
+					# Every alternate week we need to do a speed run instead of an Interval run
+					workout_type = (workout_type == "Interval" && week % 2 == 0) ? "Speed" : workout_type
+					# Get the workout
+					workout = workout_map[workout_type]
+					# Create the schedule
+					logger.debug "Scheduling #{workout.workout_type} for #{scheduled_date}"
+					Schedule.create(user_id: user.id, fitness_test_id: self.id,
+						workout_id: workout.id, workout_type: workout.workout_type, 
+						scheduled_date: scheduled_date, completion_percentage: 0)			
+				else
+					logger.debug "No Scheduling. Strength on #{scheduled_date}"
+					Schedule.create(user_id: user.id, fitness_test_id: self.id,
+						workout_id: nil, workout_type: "Strength", 
+						scheduled_date: scheduled_date, completion_percentage: 0)			
+				end
+
+				scheduled_date = scheduled_date + 1.day
+
 			end
+			week = week + 1
 		end
 	end
 end

@@ -10,7 +10,7 @@ class ScheduleDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     user_id: Field::Number,
-    workout_id: Field::Number,
+    workout_type: Field::String,
     scheduled_date: Field::DateTime,
     completion_percentage: Field::Number,
     rating: Field::Number,
@@ -27,7 +27,7 @@ class ScheduleDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :user_id,
-    :workout_id,
+    :workout_type,
     :scheduled_date,
   ].freeze
 
@@ -36,7 +36,7 @@ class ScheduleDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :user_id,
-    :workout_id,
+    :workout_type,
     :scheduled_date,
     :completion_percentage,
     :rating,
@@ -49,8 +49,6 @@ class ScheduleDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :user_id,
-    :workout_id,
     :scheduled_date,
     :completion_percentage,
     :rating,
