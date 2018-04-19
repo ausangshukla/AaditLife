@@ -57,6 +57,10 @@ class SchedulesController < ApplicationController
     @schedule.destroy
   end
 
+  def todays_schedule
+    @schedule = current_user.schedules.where(scheduled_date: Date.today).first
+    render json: @schedule
+  end
 
   def generate_schedule
     # Get the fitness test id if present - else its the current fitness test

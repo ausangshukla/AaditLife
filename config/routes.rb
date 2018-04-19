@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :schedules do
     collection do
       post :generate_schedule
+      get :todays_schedule
     end
   end
   resources :workouts
