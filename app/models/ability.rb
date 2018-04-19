@@ -41,6 +41,7 @@ class Ability
         can :manage, Schedule, :user_id =>@user.id
         can :read, Target, :user_id =>@user.id
         can :read, CardioProfile, :user_id =>@user.id
+        can :manage, StressTest, :user_id =>@user.id
     end
 
     def coach_privilages

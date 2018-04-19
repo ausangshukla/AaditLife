@@ -8,20 +8,20 @@ Rails.application.routes.draw do
     resources :medical_histories
     resources :schedules
     resources :targets
-    resources :user_stress_tests
+    resources :stress_tests
     resources :workouts
     resources :cardio_profiles
     root to: "users#index"
   end
 
   mount_devise_token_auth_for 'User', at: 'auth'
-  resources :user_stress_tests
   resources :schedules do
     collection do
       post :generate_schedule
       get :todays_schedule
     end
   end
+  resources :stress_tests
   resources :workouts
   resources :targets
   resources :fitness_tests

@@ -13,7 +13,7 @@ class Schedule < ApplicationRecord
 	end
 
 	def completed
-		if(self.scheduled_date < Date.today)
+		if(self.scheduled_date <= Date.today)
 			self.rating != nil
 		else
 			nil

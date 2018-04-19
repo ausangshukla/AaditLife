@@ -20,6 +20,7 @@ class User < ApplicationRecord
   belongs_to :company
   has_many :goals
   has_many :medical_histories
+  has_many :stress_tests
 
   has_many :workouts
   has_many :schedules

@@ -13,7 +13,7 @@ module AaditLife
     # -- all .rb files in that directory are automatically loaded.
 
 
-	config.api_only = false
+	  config.api_only = false
 
     config.log_tags  = [:request_id, lambda { |request| request.headers["uid"] } ]
     

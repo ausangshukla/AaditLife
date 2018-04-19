@@ -19,7 +19,7 @@ class GoalsController < ApplicationController
   # POST /goals.json
   def create
     @goal = Goal.new(goal_params)
-
+    @goal.user_id = current_user.id
     if @goal.save
       render json: @goal, status: :created, location: @goal
     else

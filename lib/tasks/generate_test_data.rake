@@ -155,6 +155,9 @@ namespace :al do
         m.user_id = r.id
         m.save!
 
+        st = FactoryGirl.build(:stress_test)
+        st.user_id = r.id
+        st.save!
 
         Workout::WORKOUT_TYPES.each do |wt|
           w = FactoryGirl.build(:workout)
