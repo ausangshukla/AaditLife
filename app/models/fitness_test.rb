@@ -55,7 +55,7 @@ class FitnessTest < ApplicationRecord
 
 		# Create the schdules
 		week = 1
-		scheduled_date = start_date
+		scheduled_date = start_date.beginning_of_week
 		while(scheduled_date < end_date )
 			(1..7).each do |weekday|
 				
@@ -72,7 +72,7 @@ class FitnessTest < ApplicationRecord
 						workout_id: workout.id, workout_type: workout.workout_type, 
 						scheduled_date: scheduled_date, completion_percentage: 0)			
 				else
-					logger.debug "No Scheduling. Strength on #{scheduled_date}"
+					logger.debug "No Scheduled Run. Strength on #{scheduled_date}"
 					Schedule.create(user_id: user.id, fitness_test_id: self.id,
 						workout_id: nil, workout_type: "Strength", 
 						scheduled_date: scheduled_date, completion_percentage: 0)			
