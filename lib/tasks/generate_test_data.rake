@@ -15,7 +15,9 @@ namespace :al do
     MedicalHistory.delete_all
     Schedule.delete_all
     Target.delete_all
-    UserStressTest.delete_all
+    StressTest.delete_all
+    FoodLog.delete_all
+    CardioProfile.delete_all
     Workout.delete_all
     PaperTrail::Version.delete_all
   end
@@ -165,6 +167,12 @@ namespace :al do
           w.user_id = r.id
           w.fitness_test_id = ft.id
           w.save!
+        end
+
+        (1..3).each do |i|
+          fl = FactoryGirl.build(:food_log)
+          fl.user_id = r.id
+          fl.save!
         end
       end
 

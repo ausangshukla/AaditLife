@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  
   namespace :admin do
     resources :users
     resources :companies
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
     resources :stress_tests
     resources :workouts
     resources :cardio_profiles
+    resources :food_logs
     root to: "users#index"
   end
 
@@ -21,6 +23,8 @@ Rails.application.routes.draw do
       get :todays_schedule
     end
   end
+
+  resources :food_logs
   resources :stress_tests
   resources :workouts
   resources :targets

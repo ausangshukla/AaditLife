@@ -44,7 +44,7 @@ class FitnessTest < ApplicationRecord
 		# The starting day 1=Mon, 2=Tue .....
 		start_day = day_sequence.keys.sort.first - 1
 		# we get the start and end dates
-		start_date = start_date.beginning_of_week + start_day.day # Start on Tue
+		start_date = start_date.beginning_of_week
 		end_date = (start_date + num_weeks.weeks).end_of_week
 
 		# Map the current workouts to the workout_type

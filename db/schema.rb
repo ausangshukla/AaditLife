@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180419101651) do
+ActiveRecord::Schema.define(version: 20180421072336) do
 
   create_table "cardio_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "fitness_test_id"
@@ -75,6 +75,16 @@ ActiveRecord::Schema.define(version: 20180419101651) do
     t.datetime "updated_at", null: false
     t.boolean "current"
     t.index ["current"], name: "index_fitness_tests_on_current"
+  end
+
+  create_table "food_logs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.string "meal", limit: 15
+    t.datetime "intake_date"
+    t.text "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_food_logs_on_user_id"
   end
 
   create_table "goals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

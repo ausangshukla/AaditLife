@@ -26,6 +26,7 @@ class User < ApplicationRecord
   has_many :schedules
   has_many :targets
   has_many :fitness_tests
+  has_many :food_logs
 
   has_many :current_workouts, -> (object) { 
            where("workouts.current = ?", true)

@@ -10,6 +10,7 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     company: Field::BelongsTo,
     goals: Field::HasMany,
+    food_logs: Field::HasMany,
     medical_histories: Field::HasMany,
     targets: Field::HasMany,
     current_workouts: Field::HasMany.with_options(class_name: "Workout"),
@@ -67,6 +68,7 @@ class UserDashboard < Administrate::BaseDashboard
     :fitness_tests,
     :targets,
     :current_workouts,
+    :food_logs,
     :id,
     :email,
     :first_name,
