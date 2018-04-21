@@ -27,6 +27,7 @@ class User < ApplicationRecord
   has_many :targets
   has_many :fitness_tests
   has_many :food_logs
+  has_many :strength_workouts
 
   has_many :current_workouts, -> (object) { 
            where("workouts.current = ?", true)
@@ -37,6 +38,16 @@ class User < ApplicationRecord
            where("fitness_tests.current = ?", true)
          },
          :class_name => 'FitnessTest'
+
+  has_one :current_strength_workout, -> (object) { 
+           where("strength_workouts.current = ? and strength_workouts.is_target = ?", true, false)
+         },
+         :class_name => 'StrengthWorkout'
+
+  has_one :target_strength_workout, -> (object) { 
+           where("strength_workouts.current = ? and strength_workouts.is_target = ? ", true, true)
+         },
+         :class_name => 'StrengthWorkout'
 
   scope :runners, -> { where role: "Runner" }
   scope :coaches, -> { where role: "Coach" }

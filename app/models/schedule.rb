@@ -1,7 +1,7 @@
 class Schedule < ApplicationRecord
 	belongs_to :user
 	belongs_to :fitness_test	
-	belongs_to :workout	
+	belongs_to :exercise, polymorphic: true	
 
 	after_save :send_rag_notification
 

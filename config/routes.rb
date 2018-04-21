@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   
+  resources :strength_workouts
   namespace :admin do
     resources :users
     resources :companies

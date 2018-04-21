@@ -47,6 +47,7 @@ class FitnessTest < ApplicationRecord
 		start_date = start_date.beginning_of_week
 		end_date = (start_date + num_weeks.weeks).end_of_week
 
+		current_strength_workout = self.user.current_strength_workout
 		# Map the current workouts to the workout_type
 		workout_map = {}
 		current_workouts.each do |w|
@@ -68,14 +69,22 @@ class FitnessTest < ApplicationRecord
 					workout = workout_map[workout_type]
 					# Create the schedule
 					logger.debug "Scheduling #{workout.workout_type} for #{scheduled_date}"
-					Schedule.create(user_id: user.id, fitness_test_id: self.id,
-						workout_id: workout.id, workout_type: workout.workout_type, 
+					s = Schedule.new(user_id: user.id, fitness_test_id: self.id,
+						workout_type: workout.workout_type, 
 						scheduled_date: scheduled_date, completion_percentage: 0)			
+					s.exercise = workout
+					s.save!
 				else
-					logger.debug "No Scheduled Run. Strength on #{scheduled_date}"
-					Schedule.create(user_id: user.id, fitness_test_id: self.id,
-						workout_id: nil, workout_type: "Strength", 
-						scheduled_date: scheduled_date, completion_percentage: 0)			
+					if(current_strength_workout)
+						logger.debug "No Scheduled Run. Strength on #{scheduled_date}"
+						s = Schedule.new(user_id: user.id, fitness_test_id: self.id,
+							workout_type: "Strength", 
+							scheduled_date: scheduled_date, completion_percentage: 0)			
+						s.exercise = current_strength_workout
+						s.save!
+					else
+						logger.debug "No Strength. Strength workout not defined"
+					end
 				end
 
 				scheduled_date = scheduled_date + 1.day

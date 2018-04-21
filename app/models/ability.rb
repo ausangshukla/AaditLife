@@ -38,6 +38,7 @@ class Ability
         can :manage, MedicalHistory, :user_id =>@user.id
         can :read, FitnessTest, :user_id =>@user.id
         can :read, Workout, :user_id =>@user.id
+        can :read, StrengthWorkout, :user_id =>@user.id
         can :manage, Schedule, :user_id =>@user.id
         can :read, Target, :user_id =>@user.id
         can :read, CardioProfile, :user_id =>@user.id

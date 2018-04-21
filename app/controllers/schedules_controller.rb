@@ -20,7 +20,7 @@ class SchedulesController < ApplicationController
     end
 
     
-    render json: @schedules.includes(:workout)
+    render json: @schedules.includes(:exercise)
   end
 
   # GET /schedules/1

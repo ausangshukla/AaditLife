@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421072336) do
+ActiveRecord::Schema.define(version: 20180421162450) do
 
   create_table "cardio_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "fitness_test_id"
@@ -118,7 +118,6 @@ ActiveRecord::Schema.define(version: 20180421072336) do
 
   create_table "schedules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
-    t.integer "workout_id"
     t.date "scheduled_date"
     t.integer "completion_percentage"
     t.integer "rating"
@@ -127,10 +126,29 @@ ActiveRecord::Schema.define(version: 20180421072336) do
     t.datetime "updated_at", null: false
     t.string "workout_type"
     t.integer "fitness_test_id"
+    t.string "exercise_type", limit: 15
+    t.integer "exercise_id"
     t.index ["fitness_test_id"], name: "index_schedules_on_fitness_test_id"
     t.index ["scheduled_date"], name: "index_schedules_on_scheduled_date"
     t.index ["user_id"], name: "index_schedules_on_user_id"
-    t.index ["workout_id"], name: "index_schedules_on_workout_id"
+  end
+
+  create_table "strength_workouts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "balance"
+    t.integer "plank"
+    t.integer "pushups"
+    t.integer "one_leg_raise"
+    t.integer "leg_raise_both"
+    t.integer "squats"
+    t.integer "crunches"
+    t.integer "superman"
+    t.boolean "is_target"
+    t.boolean "current"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["current"], name: "index_strength_workouts_on_current"
+    t.index ["user_id"], name: "index_strength_workouts_on_user_id"
   end
 
   create_table "stress_tests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

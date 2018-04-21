@@ -19,6 +19,7 @@ namespace :al do
     FoodLog.delete_all
     CardioProfile.delete_all
     Workout.delete_all
+    StrengthWorkout.delete_all
     PaperTrail::Version.delete_all
   end
 
@@ -168,6 +169,16 @@ namespace :al do
           w.fitness_test_id = ft.id
           w.save!
         end
+
+        s = FactoryGirl.build(:strength_workout)
+        s.is_target = true
+        s.user_id = r.id
+        s.save!  
+
+        s = FactoryGirl.build(:strength_workout)
+        s.is_target = false
+        s.user_id = r.id
+        s.save!
 
         (1..3).each do |i|
           fl = FactoryGirl.build(:food_log)
