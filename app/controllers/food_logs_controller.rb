@@ -6,9 +6,9 @@ class FoodLogsController < ApplicationController
   respond_to :json
 
   def index
-    week = params[:week].present? ? params[:week].to_i : 0
-    from = Date.today.beginning_of_week + (week * 7).days
-    @food_logs = @food_logs.where("intake_date >= ? and intake_date < ?", from, from + 7.days)
+    day = params[:day].present? ? params[:day].to_i : 0
+    from = Date.today +  day.days
+    @food_logs = @food_logs.where("intake_date >= ? and intake_date < ?", from, from + 1.day)
     respond_with(@food_logs)
   end
 
@@ -26,6 +26,8 @@ class FoodLogsController < ApplicationController
 
   def create
     @food_log = FoodLog.new(food_log_params)
+    # intake_date = Date.parse(food_log_params[:intake_date]).strftime("%Y-%m-%dT%H:%M")
+    # @food_log.intake_date = intake_date
     @food_log.user_id = current_user.id
     @food_log.save
     respond_with(@food_log)

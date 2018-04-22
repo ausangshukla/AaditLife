@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class FoodLogDashboard < Administrate::BaseDashboard
+class StrengthWorkoutDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,9 +10,16 @@ class FoodLogDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
     id: Field::Number,
-    meal: Field::Select.with_options(collection: FoodLog::MEAL_TYPES), 
-    intake_date: Field::DateTime,
-    details: Field::Text,
+    balance: Field::Number,
+    plank: Field::Number,
+    pushups: Field::Number,
+    one_leg_raise: Field::Number,
+    leg_raise_both: Field::Number,
+    squats: Field::Number,
+    crunches: Field::Number,
+    superman: Field::Number,
+    is_target: Field::Boolean,
+    current: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -25,8 +32,10 @@ class FoodLogDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :user,
     :id,
-    :meal,
-    :intake_date,
+    :current,
+    :is_target,
+    :balance,
+    :plank,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -34,9 +43,16 @@ class FoodLogDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :user,
     :id,
-    :meal,
-    :intake_date,
-    :details,
+    :balance,
+    :plank,
+    :pushups,
+    :one_leg_raise,
+    :leg_raise_both,
+    :squats,
+    :crunches,
+    :superman,
+    :is_target,
+    :current,
     :created_at,
     :updated_at,
   ].freeze
@@ -45,15 +61,23 @@ class FoodLogDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :meal,
-    :intake_date,
-    :details,
+    :user,
+    :balance,
+    :plank,
+    :pushups,
+    :one_leg_raise,
+    :leg_raise_both,
+    :squats,
+    :crunches,
+    :superman,
+    :is_target,
+    :current,
   ].freeze
 
-  # Overwrite this method to customize how food logs are displayed
+  # Overwrite this method to customize how strength workouts are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(food_log)
-  #   "FoodLog ##{food_log.id}"
+  # def display_resource(strength_workout)
+  #   "StrengthWorkout ##{strength_workout.id}"
   # end
 end
