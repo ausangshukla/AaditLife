@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421162450) do
+ActiveRecord::Schema.define(version: 20180423053506) do
 
   create_table "cardio_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "fitness_test_id"
@@ -237,6 +237,7 @@ ActiveRecord::Schema.define(version: 20180421162450) do
     t.boolean "accept_terms"
     t.boolean "goals_setup"
     t.boolean "initial_test_completed"
+    t.boolean "medical_setup"
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["deleted_at"], name: "index_users_on_deleted_at"

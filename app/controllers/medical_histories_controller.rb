@@ -19,7 +19,7 @@ class MedicalHistoriesController < ApplicationController
   # POST /medical_histories.json
   def create
     @medical_history = MedicalHistory.new(medical_history_params)
-
+    @medical_history.user_id = current_user.id
     if @medical_history.save
       render json: @medical_history, status: :created, location: @medical_history
     else
