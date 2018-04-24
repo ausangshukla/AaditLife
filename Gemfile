@@ -96,4 +96,5 @@ group :test do
   gem 'selenium-webdriver'
   gem "chromedriver-helper"
   gem 'formulaic'
+  gem 'rspec'
 end

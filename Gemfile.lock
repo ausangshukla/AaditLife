@@ -881,6 +881,19 @@ GEM
     roadie (3.3.0)
       css_parser (~> 1.4)
       nokogiri (~> 1.5)
+    rspec (3.7.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+    rspec-core (3.7.1)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.1)
     rubyzip (1.2.1)
     sanitize_email (2.0.1)
     sass (3.5.6)
@@ -997,6 +1010,7 @@ DEPENDENCIES
   responders
   rest-client
   roadie
+  rspec
   sanitize_email
   scout_apm
   selenium-webdriver

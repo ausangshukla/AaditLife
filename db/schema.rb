@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180423053506) do
+ActiveRecord::Schema.define(version: 20180424025934) do
 
   create_table "cardio_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "fitness_test_id"
@@ -225,7 +225,7 @@ ActiveRecord::Schema.define(version: 20180423053506) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "height", limit: 10
+    t.string "height", limit: 20
     t.integer "company_id"
     t.datetime "deleted_at"
     t.string "confirmation_token"

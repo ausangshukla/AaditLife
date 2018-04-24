@@ -13,5 +13,7 @@ FactoryGirl.define do
     height {rand(5.0..6.8).round(1)}
     accept_terms {true}
     birth_year {Random.new.rand(1965..2010)}
+    goals_setup {true}
+    medical_setup {true}
   end
 end

@@ -12,6 +12,8 @@ Scenario Outline: Login Successfully
   	|role=Runner	            |Welcome  |
     |role=Coach               |Welcome  |
   	|role=Company Admin		    |Welcome  |
+    |role=Runner;goals_setup=false       |Goals           |
+    |role=Runner;medical_setup=false     |Medical History |
 
 
 

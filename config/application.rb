@@ -54,6 +54,7 @@ module AaditLife
     end
 
 
+    config.action_mailer.default_url_options = { :host => "#{ENV['host']}:{ENV['port']}" }
 
   end
 end
