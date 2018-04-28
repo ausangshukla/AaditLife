@@ -90,6 +90,7 @@ namespace :al do
         u.email = "coach#{i}@gmail.com"
         u.password = "coach#{i}@gmail.com"
         u.role = "Coach"
+        u.company_id = nil
         u.save
         #puts u.to_xml
         puts "User #{u.id}"
@@ -112,6 +113,7 @@ namespace :al do
       u.email = "root@ubernurse.com"
       u.password = u.email
       u.role = "Super User"
+      u.company_id = nil
       u.save
       #puts u.to_xml
       puts "User #{u.id}"

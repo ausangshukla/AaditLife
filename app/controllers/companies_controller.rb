@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   load_and_authorize_resource param_method: :company_params, except: [:create]
 
   before_action :set_company, only: [:show, :update, :destroy]

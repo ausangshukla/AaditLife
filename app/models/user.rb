@@ -8,7 +8,7 @@ class User < ApplicationRecord
   SEX = ["M", "F"]
   ROLE = ["Runner", "Coach", "Company Admin", "Super User"]
   TITLE = ["Mr", "Mrs", "Miss"]
-
+  GUEST = User.new(role:"Guest", id:-1)
 
   # Include default devise modules.
   devise :database_authenticatable, :registerable,
@@ -51,5 +51,8 @@ class User < ApplicationRecord
 
   scope :runners, -> { where role: "Runner" }
   scope :coaches, -> { where role: "Coach" }
-  
+
+  def self.guest
+    GUEST
+  end  
 end
