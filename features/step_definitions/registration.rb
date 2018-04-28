@@ -6,14 +6,14 @@ end
 
 When(/^I fill and submit the registration page$/) do
 
-  role_label = @user.role == "Admin" ? "Care Home Admin" : @user.role
-  click_on(role_label)
+  #role_label = @user.role == "Runner" ? "Company Admin" : @user.role
+  click_on("Individual Runner")
   sleep(1)
 
-  ionic_select(@user.title, "title", true)
+  ionic_select(@user.gender, "gender", true)
   sleep(0.5)  
 
-  fields = [  "first_name", "last_name", "email", "phone", "password"]
+  fields = [  "first_name", "last_name", "email", "phone", "password", "birth_year", "height"]
   fields.each do |k|
     fill_in(k, with: @user[k])
     sleep(0.5)
@@ -22,21 +22,7 @@ When(/^I fill and submit the registration page$/) do
   fill_in("password", with: @user.email)
   fill_in("confirm_password", with: @user.email)
 
-  # select @user.role, :from => "role"
-  # select @user.sex, :from => "sex"
-
-  if(@user.role == 'Care Giver' || @user.role == 'Nurse')
-
-
-    fields = [ "postcode", "pref_commute_distance"]
-    fields.each do |k|
-      fill_in(k, with: @user[k])
-      sleep(0.5)
-    end
-
-    sleep(1)
-
-  end
+  sleep(1)
 
   find("#accept_terms").click
   click_on("Save")
@@ -67,40 +53,3 @@ Then(/^the user should be confirmed$/) do
 end
 
 
-
-Given(/^I am at the phone verification page$/) do
-  @user.phone_verified.should == false
-  sleep(1)
-  if @user.role == "Admin"
-    page.find(".back-button").click
-  end
-  click_on("Verify Mobile Number")
-end
-
-When(/^I request a sms verification code$/) do
-  within("#verification_page") do
-    sleep(1)
-    click_on("Send Verification Code")
-    sleep(1)
-
-  end
-  click_on("Yes")
-  sleep(1)
-end
-
-Then(/^an sms code must be generated$/) do
-  @user.reload
-  @user.sms_verification_code.should_not == nil
-end
-
-Then(/^when I submit the code$/) do
-  fill_in("verification_code", with: @user.sms_verification_code)
-  sleep(1)
-  click_on("Verify Code")
-  sleep(1)
-end
-
-Then(/^the user should be phone verified$/) do
-  @user.reload
-  @user.phone_verified.should == true
-end
