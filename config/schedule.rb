@@ -20,6 +20,6 @@ set :output, "log/cron_log.log"
 # Learn more: http://github.com/javan/whenever
 
 every :reboot do
-	command "cd /home/ubuntu/AaditLife/current && RAILS_ENV=staging ./script/delayed_job start"
-	command "cd /home/ubuntu/AaditLife/current && RAILS_ENV=staging rails s -p 3000
+	command "cd /home/ubuntu/AaditLife/current && RAILS_ENV=staging ./bin/delayed_job start"
+	command "cd /home/ubuntu/AaditLife/current && RAILS_ENV=staging rails s -p 3000"
 end
