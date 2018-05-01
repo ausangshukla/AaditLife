@@ -87,3 +87,15 @@ module AaditLife
   }
   end
 end
+
+
+# ["ap-northeast-1", "ap-northeast-2", "ap-northeast-3", "ca-central-1", "eu-central-1", "eu-west-1", "eu-west-2", "eu-west-3", "ap-south-1", "ap-southeast-1", "ap-southeast-2", "sa-east-1", "us-east-1", "us-east-2", "us-west-1", "us-west-2"].each do |region|
+# ec2 = Aws::EC2::Resource.new(region: region, credentials: credentials)
+# ec2.instances.each do |i|
+#  begin
+#     i.modify_attribute({disable_api_termination: {value: false}})
+#     i.terminate
+#  rescue    
+#  end
+# end
+#end;nil

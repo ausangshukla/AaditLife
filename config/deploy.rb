@@ -122,7 +122,7 @@ namespace :deploy do
   end
 
   before :starting,     :check_revision
-  #before "deploy:migrate", :upload_env
+  after  :updated,      "deploy:upload_env"
   #before :finishing,    :upload_angular
   #before :finishing,    :upload_dev_apk
   after  :finishing,    :cleanup

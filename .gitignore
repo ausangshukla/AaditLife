@@ -12,6 +12,11 @@
 /db/*.sqlite3-journal
 /db/sphinx
 
+.env.local
+.env.production
+.env.staging
+
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
