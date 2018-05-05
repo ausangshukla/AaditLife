@@ -10,7 +10,7 @@ class WorkoutDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     user_id: Field::Number,
-    workout_type: Field::String,
+    workout_type: Field::Select.with_options(collection: Workout::WORKOUT_TYPES),
     activity_time: Field::Number,
     activity_speed: Field::Number.with_options(decimals: 2),
     recovery_time: Field::Number,
