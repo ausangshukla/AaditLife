@@ -60,31 +60,37 @@ module AaditLife
 
     config.action_mailer.asset_host = "http://#{ENV['HOST']}:#{ENV['PORT']}"
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.perform_deliveries = true
+    # Don't care if the mailer can't send.
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.perform_deliveries = true
 
-  config.action_mailer.smtp_settings = {
-    :address => "email-smtp.us-east-1.amazonaws.com",
-    :domain => "aaditlife.com",
-    :port => 587,
-    :user_name => ENV["SES_SMTP_USERNAME"],
-    :password => ENV["SES_SMTP_PASSWORD"],
-    :authentication => :login,
-    :enable_starttls_auto => true
-  }
-
-
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_permissions => :private,
-    s3_credentials: {
-      bucket: "aaditlife-#{Rails.env}",
-      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-      s3_region: 'us-east-1'
+    config.action_mailer.smtp_settings = {
+      :address => "email-smtp.us-east-1.amazonaws.com",
+      :domain => "aaditlife.com",
+      :port => 587,
+      :user_name => ENV["SES_SMTP_USERNAME"],
+      :password => ENV["SES_SMTP_PASSWORD"],
+      :authentication => :login,
+      :enable_starttls_auto => true
     }
-  }
+
+
+    config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_permissions => :private,
+      s3_credentials: {
+        bucket: "aaditlife-#{Rails.env}",
+        access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+        secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+        s3_region: 'us-east-1'
+      }
+    }
+
+
+    config.to_prepare do
+      Devise::Mailer.layout "mailer" # email.haml or email.erb
+    end
+
   end
 end
 

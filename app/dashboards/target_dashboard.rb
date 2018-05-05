@@ -77,6 +77,7 @@ class TargetDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :user_id,
     :start_date,
     :end_date,
     :weight,
@@ -91,8 +92,7 @@ class TargetDashboard < Administrate::BaseDashboard
     :muscle_kg,
     :other_kg,
     :fat_loss,
-    :muscle_gain,
-    :user_id,
+    :muscle_gain,    
   ].freeze
 
   # Overwrite this method to customize how targets are displayed

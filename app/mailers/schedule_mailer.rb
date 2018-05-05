@@ -4,7 +4,7 @@ class ScheduleMailer < ApplicationMailer
     	@schedule = Schedule.find(schedule_id)
     	@user = @schedule.user
     	logger.debug("Sending mail to #{@user.email} from #{ENV['NOREPLY']}")
-    	mail( :to => ENV['ADMIN'],
+    	mail( :to => ENV['ADMIN_EMAIL'],
           :subject => "Bad Run: #{@user.first_name} #{@user.first_name} : #{@schedule.scheduled_date.strftime("%d/%m/%Y")}" )
   	end
 

@@ -10,6 +10,7 @@ class StrengthWorkoutDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
     id: Field::Number,
+    user_id: Field::Number,
     balance: Field::Number,
     plank: Field::Number,
     pushups: Field::Number,
@@ -61,7 +62,7 @@ class StrengthWorkoutDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :user,
+    :user_id,
     :balance,
     :plank,
     :pushups,

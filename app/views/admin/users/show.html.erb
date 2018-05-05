@@ -29,21 +29,55 @@ as well as a link to its edit page.
       [:edit, namespace, page.resource],
       class: "button",
     ) if valid_action?(:edit) && show_action?(:edit, page.resource) %>
+
+    
+    
+    
+    
   </div>
 </header>
 
 <section class="main-content__body">
   <dl>
     <% page.attributes.each do |attribute| %>
+
+
       <dt class="attribute-label" id="<%= attribute.name %>">
+      
       <%= t(
         "helpers.label.#{resource_name}.#{attribute.name}",
         default: attribute.name.titleize,
       ) %>
       </dt>
 
-      <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
-          ><%= render_field attribute %></dd>
+      <dd class="attribute-data attribute-data--<%=attribute.html_class%>">
+        
+        <span style="float:right;display:block;">
+        <% if attribute.name.titleize == "Fitness Tests" %>  
+          <%= link_to("Add Fitness Test",
+          new_admin_fitness_test_path(user_id: page.resource.id), class: "button")  %>
+        <% end %>
+
+        <% if attribute.name.titleize == "Targets" %>  
+          <%= link_to("Add Target",
+          new_admin_target_path(user_id: page.resource.id), class: "button")  %>
+        <% end %>
+
+        <% if attribute.name.titleize == "Current Workouts" %>  
+          <%= link_to("Add Workout",
+          new_admin_workout_path(user_id: page.resource.id), class: "button")  %>
+        <% end %>
+
+        <% if attribute.name.titleize == "Strength Workouts" %>  
+          <%= link_to("Add Strength",
+          new_admin_strength_workout_path(user_id: page.resource.id), class: "button")  %>
+        <% end %>
+      </span>
+
+
+        <%= render_field attribute %>
+          
+      </dd>
     <% end %>
   </dl>
 </section>

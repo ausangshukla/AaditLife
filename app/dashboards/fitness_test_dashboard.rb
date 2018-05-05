@@ -92,6 +92,7 @@ class FitnessTestDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :user_id,
     :test_date,
     :weight,
     :fat_percentage,
@@ -110,8 +111,6 @@ class FitnessTestDashboard < Administrate::BaseDashboard
     :duration,
     :reason_for_stopping,
     :test_details,
-    :user_id,
-    :coach_id,
     :max_heart_rate,
     :current
   ].freeze
