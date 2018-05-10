@@ -11,6 +11,7 @@ class CardioProfileDashboard < Administrate::BaseDashboard
     id: Field::Number,
     fitness_test_id: Field::Number,
     user: Field::BelongsTo,
+    user_id: Field::Number,
     on_date: Field::DateTime,
     speed: Field::Number.with_options(decimals: 2),
     bpm: Field::Number,
@@ -47,6 +48,8 @@ class CardioProfileDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :user_id,
+    :fitness_test_id,
     :on_date,
     :speed,
     :bpm,
