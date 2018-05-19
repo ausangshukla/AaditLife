@@ -36,7 +36,6 @@ class UserDashboard < Administrate::BaseDashboard
     last_sign_in_at: Field::DateTime,
     current_sign_in_ip: Field::String,
     last_sign_in_ip: Field::String,
-    height: Field::Number,
     deleted_at: Field::DateTime,
     confirmation_token: Field::String,
     confirmed_at: Field::DateTime,
@@ -83,7 +82,6 @@ class UserDashboard < Administrate::BaseDashboard
     :updated_at,
     :role,
     :phone,
-    :height,
     
   ].freeze
 
@@ -98,7 +96,7 @@ class UserDashboard < Administrate::BaseDashboard
     :birth_year,
     :role,
     :phone,
-    :height,
+    
   ].freeze
 
   # Overwrite this method to customize how users are displayed

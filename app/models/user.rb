@@ -2,7 +2,7 @@ class User < ApplicationRecord
   
   acts_as_paranoid
 
-  validates_presence_of :first_name, :last_name, :email, :role, :phone, :height, :accept_terms, :gender
+  validates_presence_of :first_name, :last_name, :email, :role, :phone, :accept_terms, :gender
 
 
   SEX = ["M", "F"]

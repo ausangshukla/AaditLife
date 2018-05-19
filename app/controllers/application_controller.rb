@@ -17,7 +17,7 @@ class ApplicationController < ActionController::API
   before_action :configure_permitted_parameters, if: :devise_controller?
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email, :role, :height, 
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email, :role,  
         :gender, :phone,:accept_terms, :company_id, :password, :birth_year])
   end
   # Exception handling via email notification
