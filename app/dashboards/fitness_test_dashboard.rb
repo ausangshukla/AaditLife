@@ -33,6 +33,7 @@ class FitnessTestDashboard < Administrate::BaseDashboard
     user_id: Field::Number,
     coach_id: Field::Number,
     max_heart_rate: Field::Number,
+    wellness_index: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     current: Field::Boolean
@@ -116,6 +117,7 @@ class FitnessTestDashboard < Administrate::BaseDashboard
     :reason_for_stopping,
     :test_details,
     :max_heart_rate,
+    :wellness_index,
     :current
   ].freeze
 
