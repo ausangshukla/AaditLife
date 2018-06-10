@@ -19,5 +19,6 @@ FactoryGirl.define do
     reason_for_stopping {Faker::Simpsons.quote}
     test_details {Faker::Seinfeld.quote}
     max_heart_rate {Random.new.rand(90..120)}
+    wellness_index {Random.new.rand(0..10)}
   end
 end

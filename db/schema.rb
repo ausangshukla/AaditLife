@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180519034603) do
+ActiveRecord::Schema.define(version: 20180609060003) do
 
   create_table "cardio_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "fitness_test_id"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20180519034603) do
     t.datetime "updated_at", null: false
     t.boolean "current"
     t.float "height", limit: 24
+    t.integer "wellness_index"
     t.index ["current"], name: "index_fitness_tests_on_current"
   end
 
