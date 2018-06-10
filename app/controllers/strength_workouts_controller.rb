@@ -6,7 +6,16 @@ class StrengthWorkoutsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with(@strength_workouts)
+    if(params[:fitness_test_id].present?)
+      @strength_workouts = @strength_workouts.where(fitness_test_id: params[:fitness_test_id])
+    else
+      @strength_workouts = @strength_workouts.where(current: true)
+    end
+
+    is_target = params[:is_target].present? ? params[:is_target] == "true" : false
+    @strength_workouts = @strength_workouts.where(is_target: is_target)
+
+    render json: @strength_workouts
   end
 
   def show
@@ -43,6 +52,7 @@ class StrengthWorkoutsController < ApplicationController
     end
 
     def strength_workout_params
-      params.require(:strength_workout).permit(:balance, :plank, :pushups, :one_leg_raise, :leg_raise_both, :squats, :crunches, :superman, :is_target, :current, :user_id)
+      params.require(:strength_workout).permit(:balance, :plank, :pushups, :one_leg_raise, 
+        :leg_raise_both, :squats, :crunches, :superman, :is_target, :current, :user_id, :fitness_test_id)
     end
 end

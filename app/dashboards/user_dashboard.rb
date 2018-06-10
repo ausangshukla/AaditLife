@@ -43,6 +43,7 @@ class UserDashboard < Administrate::BaseDashboard
     provider: Field::String,
     uid: Field::String,
     tokens: Field::Text,
+    initial_test_completed: Field::Boolean
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -58,7 +59,8 @@ class UserDashboard < Administrate::BaseDashboard
     :gender,
     :birth_year,
     :role,
-    :company
+    :company,
+    :initial_test_completed
     
   ].freeze
 
@@ -66,6 +68,7 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :company,
+    :initial_test_completed,
     :fitness_tests,
     :targets,
     :current_workouts,
