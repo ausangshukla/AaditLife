@@ -1,0 +1,176 @@
+body, label, input[type="submit"],.button {
+
+    font-weight: 200 !important ;
+}
+.main-content__page-title  {
+	font-size: .8em;
+	color: blue;
+	font-weight: 300;
+}
+.field-unit {
+	margin-bottom: .8em;
+}
+
+a {
+	text-decoration: none;
+}
+
+.child-nav {
+	font-size: .8em !important;
+	color: blue !important;
+}
+
+.child-nav:before {
+	content: "\00a0\00a0";
+}
+
+.navigation__link {
+	font-size: .9em;
+    margin-bottom: 0.1em !important;
+}
+
+input[type="submit"], .button {
+    padding: 0.5em 1em;
+    color: white !important;
+}
+
+.search {
+	font-size: 0.9em;
+	color: green;
+}
+
+.search input {
+	font-size: 1em;
+	color: green;
+}
+
+.navigation a {
+	color: blue;
+	margin-left: 1.5px;
+}
+
+.app-container {
+	line-height: 1;
+	padding: 0px;
+}
+
+.main-content {
+	margin: 0;
+}
+
+.search__clear {
+	padding: 5px;
+}
+
+.attribute-label {
+	width: calc(10% - 1rem);
+}
+/* line 1, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  margin: 33px;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 10, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 16, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 22, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+a {
+  color: #000;
+}
+/* line 25, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+a:visited {
+  color: #666;
+}
+/* line 29, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 35, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+th {
+  padding-bottom: 5px;
+}
+
+/* line 39, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+td {
+  padding: 0 5px 7px;
+}
+
+/* line 44, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 49, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+#notice {
+  color: green;
+}
+
+/* line 53, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 59, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 66, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px -7px 0;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 76, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* line 82, /home/thimmaiah/work/AaditLife/app/assets/stylesheets/scaffolds.scss */
+label {
+  display: block;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+

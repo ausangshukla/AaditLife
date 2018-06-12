@@ -98,3 +98,10 @@ group :test do
   gem 'formulaic'
   gem 'rspec'
 end
+
+group :assets do
+  gem 'therubyracer'
+  gem 'sass-rails' 
+  gem 'coffee-rails'
+  gem 'uglifier'
+end
