@@ -1,8 +1,8 @@
 # Load DSL and Setup Up Stages
 require 'capistrano/deploy'
 require 'capistrano/setup'
-require 'capistrano/rails/migrations'
-require 'capistrano/rails/assets'
+#require 'capistrano/rails/migrations'
+#require 'capistrano/rails/assets'
 
 require 'capistrano/scm/git'
 install_plugin Capistrano::SCM::Git
