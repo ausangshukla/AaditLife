@@ -13,8 +13,6 @@ module AaditLife
     # -- all .rb files in that directory are automatically loaded.
 
 
-	  config.api_only = false
-
     config.log_tags  = [:request_id, lambda { |request| request.headers["uid"] } ]
     
     # Use the responders controller from the responders gem
@@ -49,10 +47,6 @@ module AaditLife
     }
 
     config.active_job.queue_adapter = :delayed_job
-    config.to_prepare do
-      Devise::Mailer.layout "mailer"
-    end
-
 
     config.action_mailer.default_url_options = { :host => "#{ENV['HOST']}:#{ENV['PORT']}" }
     config.colorize_logging = false

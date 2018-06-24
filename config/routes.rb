@@ -2,21 +2,6 @@ Rails.application.routes.draw do
   
   
   
-  namespace :admin do
-    resources :users
-    resources :companies
-    resources :fitness_tests
-    resources :goals
-    resources :medical_histories
-    resources :schedules
-    resources :targets
-    resources :stress_tests
-    resources :workouts
-    resources :cardio_profiles
-    resources :food_logs
-    resources :strength_workouts
-    root to: "users#index"
-  end
 
   mount_devise_token_auth_for 'User', at: 'auth'
   resources :schedules do
@@ -41,6 +26,22 @@ Rails.application.routes.draw do
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
+  namespace :admin do
+    resources :users
+    resources :companies
+    resources :fitness_tests
+    resources :goals
+    resources :medical_histories
+    resources :schedules
+    resources :targets
+    resources :stress_tests
+    resources :workouts
+    resources :cardio_profiles
+    resources :food_logs
+    resources :strength_workouts
+    root to: "users#index"
   end
   
 end

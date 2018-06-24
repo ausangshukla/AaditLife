@@ -21,5 +21,5 @@ set :output, "log/cron_log.log"
 
 every :reboot do
 	command "cd /home/ubuntu/AaditLife/current && RAILS_ENV=staging ./bin/delayed_job start"
-	command "cd /home/ubuntu/AaditLife/current && RAILS_ENV=staging rails s -p 3000"
+	command "cd /home/ubuntu/AaditLife/current && bundle exec pumactl -S /home/ubuntu/AaditLife/shared/tmp/pids/puma.state -F /home/ubuntu/AaditLife/shared/puma.rb restart"
 end

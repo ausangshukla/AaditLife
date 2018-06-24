@@ -49,7 +49,7 @@ plugin :tmp_restart
 workers 4
 threads 1,4
 preload_app!
-daemonize true
+daemonize false
 pidfile 'tmp/pids/puma.pid'
 stdout_redirect 'log/puma.log', 'log/puma.log', true
 
